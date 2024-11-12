@@ -1,33 +1,37 @@
 /**
- * Fahrkartenautomat Übungsprojekt
+ * Fahrkartenautomat übungsprojekt
  * @author Lukas Koch (FI-A 45)
- * @version A3.3 Ausgabe des Fahrkartenautomaten anpassen
+ * @version A3.4 Anzahl der Tickets Hinzfügen
  */
 package A3;
 
 import java.util.Scanner;
+import java.util.UUID;
 
-class A33_UpdateFahrkartenautomat {
+public class A34_Anzahl_Der_Tickets_Hinzufuegen {
     public static void main(String[] args) {
 
         Scanner tastatur = new Scanner(System.in);
 
         double zuZahlenderBetrag;
+        int anzahlDerTickets;
         double eingezahlterGesamtbetrag;
         double eingeworfeneMuenze;
         double rueckgabebetrag;
         double nochZuZahlen;
 
         // Geldbetrag eingeben
-        System.out.print("Zu zahlender Betrag (Euro): ");
+        System.out.print("Ticketpreis (Euro): ");
         zuZahlenderBetrag = tastatur.nextDouble();
-
+        System.out.print("Anzahl der Tickets: ");
+        anzahlDerTickets = tastatur.nextInt();
+        zuZahlenderBetrag = zuZahlenderBetrag * anzahlDerTickets;
         // Geldeinwurf
         eingezahlterGesamtbetrag = 0.0;
         nochZuZahlen = 0.0;
         while (eingezahlterGesamtbetrag < zuZahlenderBetrag) {
             nochZuZahlen = zuZahlenderBetrag - eingezahlterGesamtbetrag;
-            System.out.printf("Noch zu zahlen: %.2f Euro" , nochZuZahlen);
+            System.out.printf("Noch zu zahlen: %.2f Euro \n" , nochZuZahlen);
             System.out.print("Eingabe (mind. 5 Cent, höchstens 2 Euro): ");
             eingeworfeneMuenze = tastatur.nextDouble();
             eingezahlterGesamtbetrag = eingezahlterGesamtbetrag + eingeworfeneMuenze;
@@ -78,8 +82,17 @@ class A33_UpdateFahrkartenautomat {
             }
         }
 
-        System.out.println("\nVergessen Sie nicht, den Fahrschein\n" + "vor Fahrtantritt entwerten zu lassen!\n"
-                + "Wir wünschen Ihnen eine gute Fahrt.");
+        for (int i = 0; i < anzahlDerTickets; i++) {
+            System.out.println("Fahrschein UID: " + UUID.randomUUID());
+        }
+
+        if (anzahlDerTickets > 1) {
+            System.out.println("\nVergessen Sie nicht, die Fahrscheine\n" + "vor Fahrtantritt entwerten zu lassen!\n"
+                    + "Wir wünschen Ihnen eine gute Fahrt.");
+        } else {
+            System.out.println("\nVergessen Sie nicht, den Fahrschein\n" + "vor Fahrtantritt entwerten zu lassen!\n"
+                    + "Wir wünschen Ihnen eine gute Fahrt.");
+        }
 
         tastatur.close();
     }
