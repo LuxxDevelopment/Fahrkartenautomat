@@ -26,5 +26,22 @@ public class A32_Ausgabe_Formatieren {
 
             System.out.print("\n");
         }
+
+        System.out.println("\n");
+        System.out.println("\n");
+
+        // Header der Tabelle
+        System.out.printf("%-12s | %-10s%n", "Fahrenheit", "Celsius");
+        System.out.println("------------------------------");
+
+        // Array mit den spezifischen Fahrenheit-Werten
+        int[] fahrenheitValues = {-20, -10, 0, 20, 30};
+
+        // Werte für die Tabelle
+        for (int fahrenheit : fahrenheitValues) {
+            double celsius = (fahrenheit - 32) * 5.0 / 9.0;
+            System.out.printf("%-12d | %-10.2f%n", fahrenheit, celsius);
+        }
+
     }
 }
