@@ -1,13 +1,13 @@
 /**
  * Fahrkartenautomat Übungsprojekt
  * @author Lukas Koch (FI-A 45)
- * @version A3.3 Ausgabe des Fahrkartenautomaten anpassen
+ * @version A2.6 Fahrkartenautomat kommentieren
  */
-package A3;
+package A2;
 
 import java.util.Scanner;
 
-class A33_Update_Fahrkartenautomat {
+class A26_Fahrkartenautomat_Kommentieren {
     public static void main(String[] args) {
 
         Scanner tastatur = new Scanner(System.in);
@@ -27,7 +27,7 @@ class A33_Update_Fahrkartenautomat {
         nochZuZahlen = 0.0;
         while (eingezahlterGesamtbetrag < zuZahlenderBetrag) {
             nochZuZahlen = zuZahlenderBetrag - eingezahlterGesamtbetrag;
-            System.out.printf("Noch zu zahlen: %.2f Euro" , nochZuZahlen);
+            System.out.printf("Noch zu zahlen: " + nochZuZahlen);
             System.out.print("Eingabe (mind. 5 Cent, höchstens 2 Euro): ");
             eingeworfeneMuenze = tastatur.nextDouble();
             eingezahlterGesamtbetrag = eingezahlterGesamtbetrag + eingeworfeneMuenze;

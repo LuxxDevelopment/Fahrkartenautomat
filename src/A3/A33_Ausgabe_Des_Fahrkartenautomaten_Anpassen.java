@@ -1,13 +1,13 @@
 /**
  * Fahrkartenautomat Übungsprojekt
  * @author Lukas Koch (FI-A 45)
- * @version A2.3 Fahrkartenautomat Erstellen
+ * @version A3.3 Ausgabe des Fahrkartenautomaten anpassen
  */
-package A2;
+package A3;
 
 import java.util.Scanner;
 
-class A23_Fahrkartenautomat {
+class A33_Ausgabe_Des_Fahrkartenautomaten_Anpassen {
     public static void main(String[] args) {
 
         Scanner tastatur = new Scanner(System.in);
@@ -18,22 +18,22 @@ class A23_Fahrkartenautomat {
         double rueckgabebetrag;
         double nochZuZahlen;
 
-        // 1
+        // Geldbetrag eingeben
         System.out.print("Zu zahlender Betrag (Euro): ");
         zuZahlenderBetrag = tastatur.nextDouble();
 
-        // 2
+        // Geldeinwurf
         eingezahlterGesamtbetrag = 0.0;
         nochZuZahlen = 0.0;
         while (eingezahlterGesamtbetrag < zuZahlenderBetrag) {
             nochZuZahlen = zuZahlenderBetrag - eingezahlterGesamtbetrag;
-            System.out.printf("Noch zu zahlen: " + nochZuZahlen);
+            System.out.printf("Noch zu zahlen: %.2f Euro" , nochZuZahlen);
             System.out.print("Eingabe (mind. 5 Cent, höchstens 2 Euro): ");
             eingeworfeneMuenze = tastatur.nextDouble();
             eingezahlterGesamtbetrag = eingezahlterGesamtbetrag + eingeworfeneMuenze;
         }
 
-        // 3
+        // Fahrscheinausgabe
         System.out.println("\nFahrschein wird ausgegeben");
         for (int i = 0; i < 8; i++) {
             System.out.print("=");
@@ -46,7 +46,7 @@ class A23_Fahrkartenautomat {
         }
         System.out.println("\n\n");
 
-        // 4
+        // Rückgeldberechnung und -ausgabe
         rueckgabebetrag = eingezahlterGesamtbetrag - zuZahlenderBetrag;
         if (rueckgabebetrag > 0.0) {
             System.out.println("Der Rückgabebetrag in Höhe von " + rueckgabebetrag + " Euro");
