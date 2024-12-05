@@ -14,16 +14,19 @@ public class A422_GroessterWert {
         b = tastatur.nextInt();
         System.out.print("c: ");
         c = tastatur.nextInt();
-        
+
+        // GET EINFACHER
+        // Math.max()
+
         // Verabeitung
-        if () {
-            if ( /* TODO */ ) {
+        if (a > b) {
+            if (a > c) {
                 max = a;
             } else {
                 max = c;
             }
         } else {
-            if ( /* TODO */ ) {
+            if (b > c) {
                 max = b;
             } else {
                 max = c;
