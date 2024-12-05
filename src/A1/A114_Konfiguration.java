@@ -7,7 +7,7 @@ public class A114_Konfiguration {
         final int PRUEFNR = 142;
         double prozent = 49.16;
         double euro = 53.76;
-        int cent = 80;
+        byte cent = 80;
         boolean status = true;
 
         System.out.println("Name: " + name);
