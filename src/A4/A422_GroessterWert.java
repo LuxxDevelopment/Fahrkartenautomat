@@ -16,7 +16,7 @@ public class A422_GroessterWert {
         c = tastatur.nextInt();
 
         // GET EINFACHER
-        // Math.max()
+        max = Math.max(a, Math.max(b, c));
 
         // Verabeitung
         if (a > b) {
