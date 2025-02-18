@@ -2,7 +2,7 @@ package A5;
 
 import java.util.Scanner;
 
-public class A521_Addieren {
+public class A521_Addieren_FW {
     public static void main(String[] args) {
         Scanner tastatur = new Scanner(System.in);
         System.out.print("Geben sie bitte eine Zahl ein: ");
