@@ -2,70 +2,87 @@
  * Fahrkartenautomat übungsprojekt
  *
  * @author Lukas Koch (FI-A 45)
- * @version A5.4: Fahrkartenauswahl
+ * @version A6.3.2: Methode - Erfassen der Fahrkartenbestellung
  */
-package A5;
+package A6;
 
 import java.util.Scanner;
 import java.util.UUID;
 
-public class A54_Fahrkartenauswahl {
+
+public class A632Methode_Erfassen_der_Fahrkartenbestellung {
+
+    public static void begruessung() {
+        System.out.println("Herzlich Willkommen bei Fahrkartenautomaten!");
+    }
+
+    public static double[] fahrkartenbestellungErfassen(Scanner tastatur) {
+        double zuZahlenderBetrag = 0;
+        int anzahlDerTickets = 0;
+
+        // Fahrkartenwahl
+        while (true) {
+            System.out.println("Wählen Sie Ihre Wunschfahrkarte für Berlin AB aus:");
+            System.out.println("  Kurzstrecke AB [2,00 EUR] (1)");
+            System.out.println("  Einzelfahrschein AB [3,00 EUR] (2)");
+            System.out.println("  Tageskarte AB [8,80 EUR] (3)");
+            System.out.println("  4-Fahrten-Karte AB [9,40 EUR] (4)");
+            System.out.println("  Bezahlen (9)");
+            System.out.print("\nIhre Wahl: ");
+            int wahl = tastatur.nextInt();
+
+            if (wahl >= 1 && wahl <= 4) {
+                double preis = 0;
+                if (wahl == 1) {
+                    preis = 2.00;
+                } else if (wahl == 2) {
+                    preis = 3.00;
+                } else if (wahl == 3) {
+                    preis = 8.80;
+                } else if (wahl == 4) {
+                    preis = 9.40;
+                }
+
+                // Anzahl der Tickets abfragen mit Wiederholung bei falscher Eingabe
+                while (true) {
+                    System.out.print("Anzahl der Tickets: ");
+                    anzahlDerTickets = tastatur.nextInt();
+                    if (anzahlDerTickets > 0 && anzahlDerTickets <= 10) {
+                        break;
+                    } else {
+                        System.out.println("Fehlerhafte Eingabe - Bitte geben Sie eine Anzahl zwischen 1 und 10 ein.");
+                    }
+                }
+
+                zuZahlenderBetrag += preis * anzahlDerTickets;
+                System.out.printf("\nZwischensumme: %.2f € \n\n", zuZahlenderBetrag);
+
+            } else if (wahl == 9) {
+                if (zuZahlenderBetrag == 0) {
+                    System.out.println("Sie haben keine Fahrkarten ausgewählt. Bitte wählen Sie mindestens eine Fahrkarte aus.");
+                } else {
+                    break;
+                }
+            } else {
+                System.out.println(">>falsche Eingabe<<");
+            }
+        }
+        return new double[]{zuZahlenderBetrag, anzahlDerTickets};
+    }
+
     public static void main(String[] args) {
+        begruessung();
 
         Scanner tastatur = new Scanner(System.in);
 
         double zuZahlenderBetrag = 0;
-        int anzahlDerTickets;
+        int anzahlDerTickets = 0;
         double eingezahlterGesamtbetrag;
         double eingeworfeneMuenze;
         double rueckgabebetrag;
         double nochZuZahlen;
 
-        // Fahrkartenwahl
-        while (true) {
-            System.out.println("Wählen Sie Ihre Wunschfahrkarte für Berlin AB aus:");
-            System.out.println("(1)  Kurzstrecke AB [2,00 EUR]");
-            System.out.println("(2)  Einzelfahrschein AB [3,00 EUR]");
-            System.out.println("(3)  Tageskarte AB [8,80 EUR]");
-            System.out.println("(4)  4-Fahrten-Karte AB [9,40 EUR]");
-            System.out.print("\nIhre Wahl: ");
-            int wahl = tastatur.nextInt();
 
-            switch (wahl) {
-                case 1:
-                    System.out.println("Kurzstrecke AB [2,00 EUR]");
-                    zuZahlenderBetrag = 2.00;
-                    break;
-                case 2:
-                    System.out.println("Einzelfahrschein AB [3,00 EUR]");
-                    zuZahlenderBetrag = 3.00;
-                    break;
-                case 3:
-                    System.out.println("Tageskarte AB [8,80 EUR]");
-                    zuZahlenderBetrag = 8.80;
-                    break;
-                case 4:
-                    System.out.println("4-Fahrten-Karte AB [9,40 EUR]");
-                    zuZahlenderBetrag = 9.40;
-                    break;
-                default:
-                    System.out.println(">>falsche Eingabe<<");
-            }
-            break;
-        }
-
-        // Anzahl der Tickets abfragen mit Wiederholung bei falscher Eingabe
-        while (true) {
-            System.out.print("Anzahl der Tickets: ");
-            anzahlDerTickets = tastatur.nextInt();
-            if (anzahlDerTickets > 0 && anzahlDerTickets <= 10) {
-                break;
-            } else {
-                System.out.println("Fehlerhafte Eingabe - Bitte geben Sie eine Anzahl zwischen 1 und 10 ein.");
-            }
-        }
-
-        zuZahlenderBetrag = zuZahlenderBetrag * anzahlDerTickets;
 
         // Geldeinwurf
         eingezahlterGesamtbetrag = 0.0;
